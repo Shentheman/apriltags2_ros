@@ -28,8 +28,11 @@ find_package(OpenCV REQUIRED)
 #  MinSizeRel     : w/o debug symbols, w/ optimization, stripped binaries
 set(CMAKE_BUILD_TYPE Debug)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+# https://stackoverflow.com/questions/10851247/how-to-activate-c-11-in-cmake
+# This is introduced in CMake 3.1:
 # set(CMAKE_CXX_STANDARD 11)
+# For systems with CMake < 3.1:
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
 add_definitions (-Wall -O3)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -funsafe-loop-optimizations -fsee -funroll-loops -fno-math-errno -funsafe-math-optimizations -ffinite-math-only -fno-signed-zeros ")
